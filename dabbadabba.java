@@ -61,6 +61,7 @@ public class dabbadabba {
                 System.out.print("~^");
             }
             System.out.println();
+            
             for (int j = 0; j < 8 - (2 * i); j++) {
                 System.out.print(" ");
             }
@@ -84,42 +85,51 @@ public class dabbadabba {
             }
             System.out.println("\\");
         }
+
         DrawTop();
+
         DrawSteps();
+
         System.out.print("   /");
         for (int i = 0; i < 20; i++) {
             System.out.print(" ");
         }
         System.out.print("\\");
         System.out.println();
+
         System.out.print("  /  ");
         for (int i = 0; i < 18; i++) {
             System.out.print("=");
         }
         System.out.print("  \\");
         System.out.println();
+
         System.out.print(" /  / ");
         for (int i = 0; i < 16; i++) {
             System.out.print("\"");
         }
         System.out.print(" \\  \\");
         System.out.println();
+        
         System.out.print("|  | ");
         for (int i = 0; i < 18; i++)
             System.out.print("\"");
         System.out.print(" |  |");
         System.out.println();
+        
         System.out.print(" \\  \\ ");
         for (int i = 0; i < 16; i++)
             System.out.print("\"");
         System.out.print(" /  /");
         System.out.println();
+        
         System.out.print("  \\  ");
         for (int i = 0; i < 18; i++) {
             System.out.print("=");
         }
         System.out.print("  /");
         System.out.println();
+        
         System.out.print("   \\");
         for (int i = 0; i < 20; i++) {
             System.out.print("_");
