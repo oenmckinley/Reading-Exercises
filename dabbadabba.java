@@ -1,24 +1,24 @@
 public class dabbadabba {
 
-    public static void Foo() {
+    public static void DrawDashes() {
         for (int i = 0; i < 9; i++) {
             System.out.print("-");
         }
     }
     
-    public static void BippityBop() {
-        Foo();
+    public static void DrawWindows() {
+        DrawDashes();
         System.out.print("| %");
         for (int i = 0; i < 4; i++) {
             System.out.print(" ");
         }
         System.out.print("% |" );
-        Foo();
+        DrawDashes();
         System.out.println();
     }
 
     public static void DrawTop() {
-        BippityBop();
+        DrawWindows();
         for (int i = 0; i < 4; i++) {
             System.out.print(" o");
         }
@@ -31,7 +31,7 @@ public class dabbadabba {
             System.out.print("o ");
         }
         System.out.println();
-        BippityBop();
+        DrawWindows();
     }
 
     public static void DrawSteps() {
