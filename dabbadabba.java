@@ -1,25 +1,24 @@
 public class dabbadabba {
 
-public static final int qq = 3;
-
-    public static void foo() {
+    public static void Foo() {
         for (int i = 0; i < 9; i++) {
             System.out.print("-");
         }
     }
-    public static void bippitybop() {
-        foo();
+    
+    public static void BippityBop() {
+        Foo();
         System.out.print("| %");
         for (int i = 0; i < 4; i++) {
             System.out.print(" ");
         }
         System.out.print("% |" );
-        foo();
+        Foo();
         System.out.println();
     }
 
-    public static void foo_bop() {
-        bippitybop();
+    public static void DrawTop() {
+        BippityBop();
         for (int i = 0; i < 4; i++) {
             System.out.print(" o");
         }
@@ -32,40 +31,41 @@ public static final int qq = 3;
             System.out.print("o ");
         }
         System.out.println();
-        bippitybop();
+        BippityBop();
     }
 
-    public static void drawsteps() {
+    public static void DrawSteps() {
         for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 4-i; j++) {
+            for (int j = 0; j < 4 - i; j++) {
                 System.out.print("~^");
             }
             System.out.print("~/");
-            for (int j = 0; j < 8+4*i; j++) {
+            for (int j = 0; j < 8 + 4 * i; j++) {
                 System.out.print("-");
             }
             System.out.print("\\~");
-            for (int j = 0; j < 4-i; j++) {
+            for (int j = 0; j < 4 - i; j++) {
                 System.out.print("^~");
             }
             System.out.println();
-            for (int j = 0; j < 4-i; j++) {
+            
+            for (int j = 0; j < 4 - i; j++) {
                 System.out.print("^~");
             }
             System.out.print("/");
-            for (int j = 0; j < 10+4*i; j++) {
+            for (int j = 0; j < 10 + 4 * i; j++) {
                 System.out.print("-");
             }
             System.out.print("\\");
-            for (int j = 0; j < 4-i; j++) {
+            for (int j = 0; j < 4 - i; j++) {
                 System.out.print("~^");
             }
             System.out.println();
-            for (int j = 0; j < 8-(2*i); j++) {
+            for (int j = 0; j < 8 - (2 * i); j++) {
                 System.out.print(" ");
             }
             System.out.print("|");
-            for (int j = 0; j < 10+4*i; j++) {
+            for (int j = 0; j < 10 + 4 * i; j++) {
                 System.out.print("=");
             }
             System.out.print("|");
@@ -75,7 +75,7 @@ public static final int qq = 3;
 
     public static void main(String[] args) {
         for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 13-i; j++) {
+            for (int j = 0; j < 13 - i; j++) {
                 System.out.print(" ");
             }
             System.out.print("/");
@@ -84,8 +84,8 @@ public static final int qq = 3;
             }
             System.out.println("\\");
         }
-        foo_bop();
-        drawsteps();
+        DrawTop();
+        DrawSteps();
         System.out.print("   /");
         for (int i = 0; i < 20; i++) {
             System.out.print(" ");
