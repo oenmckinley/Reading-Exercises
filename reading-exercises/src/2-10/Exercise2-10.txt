@@ -1,0 +1,21 @@
+Exercise for February 10
+
+For the recurrance given:
+
+    T'(0) = 0
+    T'(n) = 1 + T'(n - 2)
+
+when the given n is even (that is, divisible by 2), then the recurrance
+will give "T'(n) = n/2". However, if the given n is odd, then the base case
+of T'(0) = 0 is never reached, and therefore the cycle will keep going and
+tend towards infinity. Generalizing to any formula of the form:
+
+     T'(0) = 0
+     T'(n) = x + T'(n - k)
+
+where n, x, and k are numbers such that k divides n evenly (for the reasons
+stated above), then we know that "T'(n) = x * n/k". This is because the
+recursion will happen n/k times before the base case is reached, and each
+time recursion occurs, another x is added. However, in all of these cases,
+the Big-O will always be "O(n)", because the resulting formula will always
+be of that family of functions.
