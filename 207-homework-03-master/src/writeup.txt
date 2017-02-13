@@ -5,21 +5,85 @@ Problem 1 Complexity:
         true for any elements in the array arr. In the worst case, our
         implementation will go through each element once, and access an
         element in the array once for each, meaning that our T(n) = n. In
-        this case,  T \in O(n), with c = 1, x0 = 1, becasue
+        this case,  T \in O(n), with c = 1, x0 = 1, because
         |n| <= 1*|n| for all n >= 1.
 
 Problem 2 Complexity:
 
-        We will count the number of divisions occuring in our
+        We will count the number of divisions occurring in our
         implementation. The input is y, the exponent. Assume that y is
         even. Our base case for recursion is T(0) = 0, and our recursive
         step is T(n) = 1 + T(n/2). The first few steps of recursion are:
              T(n) = 1 + (1 + T(n/4))
              T(n) = 1 + (1 + (1 + T(n/8)))
-        So, we can see that for k unflodings, T(n) = k + (n/(2^k)). Once we
+        So, we can see that for k unfoldings, T(n) = k + (n/(2^k)). Once we
         get to T(1), the base case immediately follows, and because T(0) =
         0, we can just work down to T(1). This means that we go until 2^k =
         n, and solving for k, we get that k = log_2(n). So, T(n) =
-        log_2(n). Therefore, T \in O(log(n)), where c = 1/log(2) and x0 =
-        1, becasue |log_2(n)| <= 1/log(2)*|log(n)| for all n >= 1.
+        log_2(n). Therefore, T \in O(log(n)), where c = 1/log(2) and x_0 =
+        1, because |log_2(n)| <= 1/log(2)*|log(n)| for all n >= 1.
 
+Problem 3 Complexity:
+
+        We will count the number of array accesses in our
+        implementation. The input is the length of array arr. When the
+        array of Pairs "pairs" is initialized, its length is the square of
+        the initial length of arr, and using for-loops the procedure goes
+        through each element in turn. Another way to look at it is that we
+        have a double-nested for-loop, meaning that the implementation goes
+        through each element in the array for every element in the
+        array. This means that T(n) = n^2, and therefore T \in O(n^2),
+        where c = 1 and x_0 = 1, because |n^2| <= 1*|n^2| for all n >= 1.
+
+Problem 4 Complexity:
+
+        We will count concatenation operations in the implementation. The
+        inputs are the length of arr and the integer parameter reps. If we
+        let the length of arr be "m" and let reps be "n". Because of our
+        nested for-loops, for each element in arr, we call the operation n
+        times. Then T(m, n) = m*n, so for each set value of m, the function
+        behaves linearly with respect to n and vice-versa. However, when
+        both are allowed to vary, the function would behave more
+        quadratically, which follows from our doubly-nested
+        for-loops. This means that T(m, n) = m*n, and therefore T \in O(m*n),
+        where c = 1 and x_0 = 1, because |m*n| <= 1*|m*n| for all m, n >= 1.
+
+        Knowing that the concatenation operation is of class O(n + m) for
+        two strings of length n and m, it follows that the operation
+        behaves linearly. Since we know that the function performs m*n
+        calls to the concatenation operation, each of which performs n + m
+        operations, it follows that the resulting number of operations is
+        (n+m)*n*m = n^2 m + n m^2 which behaves more or less
+        cubically. We can therefore conclude that T \in O(n^2 m + n m^2).
+
+Problem 5 Complexity:
+
+        We will count the number of array accesses. The inputs to the
+        function are the lengths of arr1 and arr2, respectively. In the
+        worst case scenario, the arrays are of different length. Let m =
+        arr1.length and let n = arr2.length and suppose, without loss
+        of generality, that m > n. Each iteration of the first for-loop
+        makes 4 array accesses, and since the loop runs n times, it follows
+        that there are 4n array accesses in total. Since m>n, the second
+        but not the third for-loop will run. The second loop makes 2 array
+        accesses per iteration and performs m-n iterations, yielding 2(m-n)
+        total array accesses. As such, the method as a whole performs 4n +
+        2(m-n) =  2(n+m) array accesses in total. Therefore, T \in O(n+m),
+        which implies that the function behaves linearly.
+
+        
+        The input to the space complexity function are the length of arr1
+        and arr2. Let m = arr1.length and let n = arr2.length. In addition
+        to the local variables arr1 and arr2, which reference arrays
+        outside of the runtime stack for interleave, there are two int
+        declarations for minlen and i, and a declaration of an int array of
+        length  m+n. Disregarding the size of the references to arr1 and
+        arr2, the total allocated space is (sizeof int)*(2+m+n). Therefore,
+        T \in O(m+n) which implies that the function behaves linearly.
+
+
+        After reviewing the space complexity of the other functions, we
+        have come to the conclusion that the time complexity is always an
+        upper bound on the space complexity. In other words. time
+        complexity is always of a big-O class greater than or equal to that
+        of the space complexity.

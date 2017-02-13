@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 public class Program {
 	
 	// Problem 1
@@ -56,20 +54,20 @@ public class Program {
 	//Problem 5
 	public static int[] interleave(int[] arr1, int[] arr2) {
 		int[] result = new int[arr1.length + arr2.length];
-		int minlen;
+		int minlen, i;
 		if (arr1.length < arr2.length){
 			minlen = arr1.length;
 		} else {
 			minlen = arr2.length;
 		}
-		for (int i = 0; i < minlen; i++) {
+		for (i = 0; i < minlen; i++) {
 			result[2 * i] = arr1[i];
 			result[2 * i + 1] = arr2[i];
 		}
-		for (int i = minlen; i < arr1.length; i++) {
+		for (i = minlen; i < arr1.length; i++) {
 			result[minlen + i] = arr1[i];
 		}
-		for (int i = minlen; i < arr2.length; i++) {
+		for (i = minlen; i < arr2.length; i++) {
 			result[minlen + i] = arr2[i];
 		}
 		return result;
