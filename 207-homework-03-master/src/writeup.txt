@@ -1,0 +1,25 @@
+Problem 1 Complexity:
+
+        We will count the number of array accesses. The input is the array
+        size. The worst case scenario is that the inequality does not hold
+        true for any elements in the array arr. In the worst case, our
+        implementation will go through each element once, and access an
+        element in the array once for each, meaning that our T(n) = n. In
+        this case,  T \in O(n), with c = 1, x0 = 1, becasue
+        |n| <= 1*|n| for all n >= 1.
+
+Problem 2 Complexity:
+
+        We will count the number of divisions occuring in our
+        implementation. The input is y, the exponent. Assume that y is
+        even. Our base case for recursion is T(0) = 0, and our recursive
+        step is T(n) = 1 + T(n/2). The first few steps of recursion are:
+             T(n) = 1 + (1 + T(n/4))
+             T(n) = 1 + (1 + (1 + T(n/8)))
+        So, we can see that for k unflodings, T(n) = k + (n/(2^k)). Once we
+        get to T(1), the base case immediately follows, and because T(0) =
+        0, we can just work down to T(1). This means that we go until 2^k =
+        n, and solving for k, we get that k = log_2(n). So, T(n) =
+        log_2(n). Therefore, T \in O(log(n)), where c = 1/log(2) and x0 =
+        1, becasue |log_2(n)| <= 1/log(2)*|log(n)| for all n >= 1.
+

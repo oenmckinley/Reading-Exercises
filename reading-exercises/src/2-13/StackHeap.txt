@@ -1,0 +1,19 @@
+1. At Point A in the code, the stack-and-heap diagram would look like this:
+
+   Stack               Heap
+   -----               ----
+--main
+c       [  ]--------> Counter
+                     value [ 1 ]
+
+--doWork
+c       [  ]--------> Counter
+                     value [ 0 ]
+
+because the c within doWork was pointing to the original Counter and
+incremented, but then created a new Counter just before Point A.
+
+2. At Point B, the value of c's "value" field would have started at 0 and
+been incremented once, before a new counter local to doWork was created and
+incremented to 2. Therefore, the original c's value field is "1", because
+it was only incremented once.

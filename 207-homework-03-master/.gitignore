@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-.*.swp
-.*.un
-.class
-bin/
-=======
 *.class
 
 # Mobile Tools for Java (J2ME)
@@ -18,4 +12,3 @@ bin/
 hs_err_pid*
 
 .*.un~
->>>>>>> accb4cc75cd9cfdc04a4bde2fbfb4f2dff7a8dad
