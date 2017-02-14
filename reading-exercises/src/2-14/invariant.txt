@@ -1,0 +1,7 @@
+One possible loop invariant for this implementation of max in that ret must
+be greater than or equal to all elements before arr[i] in the array
+arr. For example, if i = 3, then ret >= arr[0], arr[1], arr[2]. The loop
+does enforce this with a conditional "if (arr[i] < ret)" before the
+assignment. To reitterate, an appropriate loop invariate is that ret >= all
+arr[k], such that k < i, and the implementation does enforce this invariate
+properly. 
