@@ -1,9 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 .*.swp
 .*.un
 .class
 bin/
 =======
+=======
+>>>>>>> dca39fe4d3deecea17e6edd36b79888cad664a5d
 *.class
 
 # Mobile Tools for Java (J2ME)
@@ -14,8 +17,15 @@ bin/
 *.war
 *.ear
 
+<<<<<<< HEAD
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
 .*.un~
 >>>>>>> accb4cc75cd9cfdc04a4bde2fbfb4f2dff7a8dad
+=======
+# virtual machine crash logs, see
+# http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+>>>>>>> dca39fe4d3deecea17e6edd36b79888cad664a5d
