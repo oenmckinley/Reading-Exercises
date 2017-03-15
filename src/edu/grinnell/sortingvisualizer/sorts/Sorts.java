@@ -8,8 +8,17 @@ import edu.grinnell.sortingvisualizer.sortevents.CompareEvent;
 import edu.grinnell.sortingvisualizer.sortevents.SwapEvent;
 import edu.grinnell.sortingvisualizer.sortevents.CopyEvent;
 
-public class Sorts {
 
+
+
+/** Sorts
+ * Various sorting algorithms that are implemented on data lists*/
+public class Sorts {
+	
+	/** Selection Sort
+	 * @param l: An array list 
+	 * @return A list of sorting events
+	 */
 	public static <T extends Comparable<T>> List<SortEvent<T>> selectionSort(ArrayList<T> l) {
 		List<SortEvent<T>> ret = new ArrayList<>();
 		for (int i = 0; i < l.size(); i++) {
@@ -26,7 +35,10 @@ public class Sorts {
 		}
 		return ret;
 	}
-
+	/** Insertion Sort
+	 * @param l: An array list 
+	 * @return A list of sorting events
+	 */
 	public static <T extends Comparable<T>> List<SortEvent<T>> insertionSort(ArrayList<T> l) {
 		List<SortEvent<T>> ret = new ArrayList<>();
 		for (int i = 1; i < l.size(); i++) {
@@ -50,7 +62,10 @@ public class Sorts {
 		}
 		return ret;
 	}
-
+	/** Bubble Sort
+	 * @param l: An array list 
+	 * @return A list of sorting events
+	 */
 	public static <T extends Comparable<T>> List<SortEvent<T>> bubbleSort(ArrayList<T> l) {
 		List<SortEvent<T>> ret = new ArrayList<>();
 		for (int n = 0; n < l.size(); n++) {
@@ -67,7 +82,13 @@ public class Sorts {
 		}
 		return ret;
 	}
-
+	/** Merge
+	 * @param l: An array list 
+	 * @param lo an integer that is the index of the first element in the array
+	 * @param mid an integer that is is the index of the middle element
+	 * @param hi an integer that is the index of the highest element
+	 * @return A list of sorting events
+	 */
 	private static <T extends Comparable<T>> List<SortEvent<T>> merge(ArrayList<T> l, int lo, int mid, int hi) {
 		List<SortEvent<T>> ret = new ArrayList<>();
 		ArrayList<T> l2 = new ArrayList<>();
@@ -98,7 +119,12 @@ public class Sorts {
 		}
 		return ret;
 	}
-
+	/** Merge Sort Helper
+	 * @param l: An array list 
+	 * @param lo Index of the first element in the array
+	 * @param hi index of the last element in the array
+	 * @return A list of sorting events
+	 */
 	private static <T extends Comparable<T>> List<SortEvent<T>> mergeSortHelper(ArrayList<T> l, int lo, int hi) {
 		List<SortEvent<T>> ret = new ArrayList<>();
 		if (lo < hi) {
@@ -112,12 +138,21 @@ public class Sorts {
 		}
 		return ret;
 	}
-
+	/** Merge Sort
+	 * @param l: An array list 
+	 * @return A list of sorting events
+	 */
 	public static <T extends Comparable<T>> List<SortEvent<T>> mergeSort(ArrayList<T> l) {
 		List<SortEvent<T>> ret = mergeSortHelper(l, 0, l.size() - 1);
 		return ret;
 	}
-
+	/** partition
+	 * @param l: An array list 
+	 * @param low index of first element in array
+	 * @param hi index of last element in array
+	 * @param pivotIndex Index of element acting as pivot
+	 * @return A list of sorting events
+	 */
 	private static <T extends Comparable<T>> int partition(ArrayList<T> l, int low, int hi, int pivotIndex,
 			List<SortEvent<T>> ev) {
 		T pivot = l.get(pivotIndex);
@@ -144,7 +179,12 @@ public class Sorts {
 		e3.apply(l);
 		return i;
 	}
-
+	/** Quicksort helper
+	 * @param ArrayList<T>: An array list 
+	 * @param lo index of first element in array
+	 * @param hi index of last element in array
+	 * @return A list of sorting events
+	 */
 	private static <T extends Comparable<T>> List<SortEvent<T>> quickSortHelper(ArrayList<T> l, int lo, int hi) {
 		List<SortEvent<T>> ret = new ArrayList<>();
 		if (lo < hi) {
@@ -155,10 +195,18 @@ public class Sorts {
 		}
 		return ret;
 	}
+	/** Quick Sort
+	 * @param ArrayList<T>: An array list 
+	 * @return A list of sorting events
+	 */
 
 	public static <T extends Comparable<T>> List<SortEvent<T>> quickSort(ArrayList<T> l) {
 		return quickSortHelper(l, 0, l.size() - 1);
 	}
+	/** Shellsort Sort
+	 * @param ArrayList<T>: An array list 
+	 * @return A list of sorting events
+	 */
 
 	public static <T extends Comparable<T>> List<SortEvent<T>> shellSort(ArrayList<T> l) {
 		List<SortEvent<T>> ret = new ArrayList<>();
@@ -184,7 +232,10 @@ public class Sorts {
 		}
 		return ret;
 	}
-
+	/** Event sort
+	 * @param l: An array list
+	 * @param events: A list of sorting events 
+	 */
 	public static <T extends Comparable<T>> void eventSort(ArrayList<T> l, List<SortEvent<T>> events) {
 		for (int i = 0; i < events.size(); i++) {
 			events.get(i).apply(l); 
