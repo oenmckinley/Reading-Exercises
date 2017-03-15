@@ -44,6 +44,6 @@ public class Scale {
      * @param highlighted true if this note be emphasized
      */
     public void playNote(int index, boolean emphasized) {
-        instrument.noteOn(notes[index], emphasized ? EMPHASIZED_VELOCITY : REGULAR_VELOCITY);
+    		instrument.noteOn(notes[index], emphasized ? EMPHASIZED_VELOCITY : REGULAR_VELOCITY);
     }
 }

@@ -10,12 +10,6 @@ import edu.grinnell.sortingvisualizer.sortevents.CopyEvent;
 
 public class Sorts {
 
-	/* private static <T extends Comparable<T>> void swap(ArrayList<T> l, int i, int j) {
-		T temp = l.get(i);
-		l.set(i, l.get(j));
-		l.set(j, temp);
-	} */
-
 	public static <T extends Comparable<T>> List<SortEvent<T>> selectionSort(ArrayList<T> l) {
 		List<SortEvent<T>> ret = new ArrayList<>();
 		for (int i = 0; i < l.size(); i++) {
@@ -26,8 +20,9 @@ public class Sorts {
 					minIndex = j;
 				}
 			}
-			//swap(l, i, minIndex);
-			ret.add(new SwapEvent<>(i, minIndex));
+			SortEvent<T> e1=new SwapEvent<>(i, minIndex);
+			ret.add(e1);
+			e1.apply(l);
 		}
 		return ret;
 	}
@@ -38,14 +33,17 @@ public class Sorts {
 			T temp = l.get(i);
 			for (int x = 0; x <= i; x++) {
 				if (x == i) {
-					ret.add(new CompareEvent<>(x, i));
-					//l.set(x, temp);
-					ret.add(new CopyEvent<>(x, temp));
+					SortEvent<T> e1= new CopyEvent<>(x,temp);
+					ret.add(e1);
+					e1.apply(l);
 				} else if (l.get(x).compareTo(temp) >= 0) {
-					ret.add(new CompareEvent<>(x, l.indexOf(temp)));
+					if (l.indexOf(temp) >= 0) {
+						ret.add(new CompareEvent<>(x, l.indexOf(temp)));
+					}
 					T temp2 = l.get(x);
-					//l.set(x, temp);
-					ret.add(new CopyEvent<>(x, temp));
+					SortEvent<T> e2= new CopyEvent<>(x,temp);
+					ret.add(e2);
+					e2.apply(l);
 					temp = temp2;
 				}
 			}
@@ -60,8 +58,10 @@ public class Sorts {
 				int temp = i - 1;
 				if (l.get(temp).compareTo(l.get(i)) > 0) {
 					ret.add(new CompareEvent<>(temp, i));
-					//swap(l, temp, i);
-					ret.add(new SwapEvent<>(temp, i));
+					SortEvent<T> e1= new SwapEvent<>(i,temp);
+					ret.add(e1);
+					e1.apply(l);
+					
 				}
 			}
 		}
@@ -92,8 +92,9 @@ public class Sorts {
 			j++;
 		}
 		for (int n = lo; n <= hi; n++) {
-			//l.set(n, l2.get(n - lo));
-			ret.add(new CopyEvent<>(n, l2.get(n - lo)));
+			SortEvent<T> e1= new CopyEvent<>(n,l2.get(n-lo));
+			ret.add(e1);
+			e1.apply(l);
 		}
 		return ret;
 	}
@@ -120,8 +121,9 @@ public class Sorts {
 	private static <T extends Comparable<T>> int partition(ArrayList<T> l, int low, int hi, int pivotIndex,
 			List<SortEvent<T>> ev) {
 		T pivot = l.get(pivotIndex);
-		//swap(l, hi, pivotIndex);
-		ev.add(new SwapEvent<T>(hi, pivotIndex));
+		SortEvent<T> e1 = new SwapEvent<T>(hi, pivotIndex);
+		ev.add(e1);
+		e1.apply(l);
 		int i = low;
 		int j = hi;
 		while (i != j) {
@@ -133,11 +135,13 @@ public class Sorts {
 				ev.add(new CompareEvent<T>(j, l.indexOf(pivot)));
 				j--;
 			}
-			//swap(l, i, j);
-			ev.add(new SwapEvent<T>(i, j));
+			SortEvent<T> e2 = new SwapEvent<T>(i, j);
+			ev.add(e2);
+			e2.apply(l);
 		}
-		//swap(l, i, hi);
-		ev.add(new SwapEvent<T>(i, j));
+		SortEvent<T> e3 = new SwapEvent<T>(i, hi);
+		ev.add(e3);
+		e3.apply(l);
 		return i;
 	}
 
@@ -146,16 +150,14 @@ public class Sorts {
 		if (lo < hi) {
 			int pivot = hi / 2 + lo / 2;
 			pivot = partition(l, lo, hi, pivot, ret);
-			quickSortHelper(l, lo, pivot);
-			quickSortHelper(l, pivot + 1, hi);
+			ret.addAll(quickSortHelper(l, lo, pivot));
+			ret.addAll(quickSortHelper(l, pivot + 1, hi));
 		}
 		return ret;
 	}
 
 	public static <T extends Comparable<T>> List<SortEvent<T>> quickSort(ArrayList<T> l) {
-		List<SortEvent<T>> ret = new ArrayList<>();
-		quickSortHelper(l, 0, l.size() - 1);
-		return ret;
+		return quickSortHelper(l, 0, l.size() - 1);
 	}
 
 	public static <T extends Comparable<T>> List<SortEvent<T>> shellSort(ArrayList<T> l) {
@@ -165,13 +167,15 @@ public class Sorts {
 			for (int p = gap; p < l.size(); p++) {
 				if (l.get(p).compareTo(l.get(p - gap)) < 0) {
 					ret.add(new CompareEvent<>(p, p-gap));
-					//swap(l, p, p - gap);
-					ret.add(new SwapEvent<>(p, p-gap));
+					SortEvent<T> e1 = new SwapEvent<>(p, p-gap);
+					ret.add(e1);
+					e1.apply(l);
 					for (int i = p - gap; i >= gap; i -= gap) {
 						if (l.get(i).compareTo(l.get(i - gap)) < 0) {
 							ret.add(new CompareEvent<>(i, i-gap));
-							//swap(l, i, i - gap);
-							ret.add(new SwapEvent<>(i, i-gap));
+							SortEvent<T> e2 = new SwapEvent<>(i, i-gap);
+							ret.add(e2);
+							e2.apply(l);
 						}
 					}
 				}
@@ -181,4 +185,10 @@ public class Sorts {
 		return ret;
 	}
 
+	public static <T extends Comparable<T>> void eventSort(ArrayList<T> l, List<SortEvent<T>> events) {
+		for (int i = 0; i < events.size(); i++) {
+			events.get(i).apply(l); 
+		}
+	}
+	
 }

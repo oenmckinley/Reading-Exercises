@@ -1,5 +1,6 @@
 package edu.grinnell.sortingvisualizer;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
@@ -24,6 +25,18 @@ public class ArrayPanel extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-        // TODO: fill me in
+    	g.clearRect(0, 0, (int)this.getPreferredSize().getWidth(), (int)this.getPreferredSize().getHeight());
+    	g.setColor(Color.RED);
+    	int len = notes.getNotes().size();
+    	int wid = (int) (this.getPreferredSize().getWidth()/len);
+    	int hei = (int) (this.getPreferredSize().getHeight());
+    	for (int i = 0; i < len; i++) {
+    		if (notes.isHighlighted(i)) {
+    			g.setColor(Color.YELLOW);
+    		}
+    		int y = (len - 1 - notes.getNotes().get(i)) * hei/len;
+    		g.fillRect(wid*i, y, wid, hei - y);
+    		g.setColor(Color.RED);
+    	}
     }
 }
