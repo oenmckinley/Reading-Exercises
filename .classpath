@@ -3,6 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 =======
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
@@ -10,5 +11,9 @@
 =======
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 >>>>>>> dca39fe4d3deecea17e6edd36b79888cad664a5d
+=======
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+>>>>>>> ba69cca5c4df949a2f92105ad5eedd51dc9a89ae
 	<classpathentry kind="output" path="bin"/>
 </classpath>

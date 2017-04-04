@@ -41,6 +41,18 @@ public class Piece {
         return ((boolean[][][]) ROTATION_DATA.get(kind))[orientation];
     }
     
+    public boolean[][] getFutureLayout(boolean x) {
+    	if (x) {
+        	return ((boolean[][][]) ROTATION_DATA.get(kind))[(orientation + 1) % 4];
+        } else {
+        	if (orientation == 0) {
+        		return ((boolean[][][]) ROTATION_DATA.get(kind))[3];
+        	} else {
+        		return ((boolean[][][]) ROTATION_DATA.get(kind))[orientation - 1];
+        	}
+        }
+    }
+    
     public void rotate(boolean dir) {
         if (dir) {
             orientation = (orientation + 1) % 4;
