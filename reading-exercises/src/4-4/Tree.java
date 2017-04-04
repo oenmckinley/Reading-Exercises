@@ -1,4 +1,5 @@
 
+
 public class Tree<T> {
 	private static class Node<T> {
 		public T value;
